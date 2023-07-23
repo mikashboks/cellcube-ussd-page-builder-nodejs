@@ -1,6 +1,6 @@
 {
   "name": "@mikashboks/cellcube-ussd-page-builder-nodejs",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A NodeJs module for generating USSD pages for Myriade's CellCube platform",
   "main": "index.js",
   "scripts": {
