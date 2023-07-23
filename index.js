@@ -16,8 +16,8 @@ var generateRedirectPage = function(options){
             
     var page = require('./templates/redirect.xml')
                 .replace("{descr}",options.descr? options.descr : process.pid)                
-                .replace("{count}",options.count? options.count : true)
-                .replace("{ismenu}",options.descr? options.ismenu : true)                
+                .replace("{nav}",options.nav? options.nav : 'default')
+                .replace("{ismenu}",options.ismenu? options.ismenu : true)                
                 .replace("{volatile}",options.descr? options.volatile : false)
                 .replace("{erl}",options.erl)
     
@@ -61,7 +61,7 @@ var generateContentPage = function(options){
     
     var page = require('./templates/page.xml')
                 .replace("{descr}",options.descr? options.descr : process.pid)
-                .replace("{count}",options.count? options.count : true)
+                .replace("{nav}",options.nav? options.nav : 'default')
                 .replace("{volatile}",options.volatile? options.volatile : false)
                 .replace("{ismenu}",options.ismenu? options.ismenu : true)
                 .replace("{content}",options.content? options.content + "<br/>" : "")
@@ -93,12 +93,12 @@ var generateForm = function(options){
     
     var page = require('./templates/form.xml')
                 .replace("{descr}", options.descr? options.descr : process.pid )
-                .replace("{count}",options.count? options.count : true)
+                .replace("{nav}",options.nav? options.nav : 'default')
                 .replace("{volatile}",options.volatile? options.volatile : false)
-                .replace("{ismenu}",options.ismenu? options.ismenu : true)
+                .replace("{ismenu}",options.ismenu? options.ismenu : false)
                 .replace("{action}", options.action? options.action : "")
                 .replace("{var}", options.var? options.var : "")
-                .replace("{kind}",options.kind? options.kind : "digits")
+                .replace("{kind}",options.kind? options.kind : "alphanum")
                 .replace("{prompt}",options.prompt? options.prompt + "<br/>" : "")
     return page
 }
@@ -106,7 +106,7 @@ var generateForm = function(options){
 var generateEmptyPage = function(options){
     return require('./templates/page.xml')
                 .replace("{descr}", options.descr? options.descr : process.pid)
-                .replace("{count}",true)
+                .replace("{nav}", options.nav? options.nav : 'default')
                 .replace("{volatile}",false)
                 .replace("{ismenu}",true)
                 .replace("{content}","")
